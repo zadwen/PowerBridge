@@ -26,6 +26,7 @@ jobs:
           xcodebuild -version
           xcodebuild -showsdks
       - name: Compile unsigned iPhone-device app and package IPA
+        shell: bash
         run: |
           mkdir -p build
           bash scripts/build-unsigned-ipa.sh 2>&1 | tee build/ios-build.log

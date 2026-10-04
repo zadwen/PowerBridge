@@ -34,7 +34,7 @@ assert (app / info['CFBundleExecutable']).is_file(), 'Missing executable'
 assert not (app / 'embedded.mobileprovision').exists(), 'Unexpected provisioning profile in unsigned build'
 print('Verified iPhoneOS application metadata.')
 PY
-xcrun lipo -verify_arch arm64 "$app_path/PowerBridge"
+xcrun lipo "$app_path/PowerBridge" -verify_arch arm64
 staging_dir=$(mktemp -d "$project_root/build/ipa-stage.XXXXXX")
 trap 'rm -rf -- "$staging_dir"' EXIT
 mkdir -p "$staging_dir/Payload"
