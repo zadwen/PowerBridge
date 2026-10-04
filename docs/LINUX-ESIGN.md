@@ -19,6 +19,8 @@ git push -u origin main
 
 Replace `YOUR_USERNAME`. Use your normal GitHub authentication (for example GitHub CLI login or a personal access token), not your account password for HTTPS Git. Git may ask you to configure a commit name/email if you have not done so before.
 
+Before adding files, run `git rev-parse --show-toplevel` and confirm it points to this `PowerBridge` directory. If it points to a parent directory, run `git init` inside `PowerBridge` to create a separate repository before proceeding. Do not push the parent repository's remote.
+
 Push only the supplied source project, before creating PC pairing configurations. Never commit your ESign certificate/private key, certificate password, provisioning profile, or PC pairing files. The build does not need them. `.gitignore` covers the generated companion configs but is not a substitute for checking what you upload.
 
 At the repository root you must see `ios`, `scripts`, `companion`, and the hidden `.github/workflows/ios-build.yml`. If everything is nested inside an extra `PowerBridge` folder, the workflow will not run. Use `git add .` as shown so the hidden workflow folder is included.
@@ -34,7 +36,11 @@ At the repository root you must see `ios`, `scripts`, `companion`, and the hidde
 
 The job uses `iphoneos`, a generic iOS device destination, and arm64, then validates the app metadata and ZIP structure. It does not build a simulator app. It neither signs nor uploads the app to Apple. GitHub runner availability and account usage limits still apply.
 
+The workflow selects Xcode 16.4 on `macos-15` and cancels older runs for the same branch. No GitHub signing secrets are required. After extracting the artifact, verify its checksum from that folder with `sha256sum -c PowerBridge-unsigned.ipa.sha256` on Linux.
+
 If the run fails, open its failed step and copy the compiler error text. There will be no valid IPA artifact until the build succeeds. Do not rename the source ZIP to `.ipa`.
+
+If compilation fails, download **PowerBridge-build-diagnostics** for the build log and Xcode result bundle when available. IPA artifacts remain available for 14 days; diagnostics remain for 7 days.
 
 ## 3. Sign in ESign on your iPhone
 

@@ -5,6 +5,10 @@ project_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 cd "$project_root"
 command -v xcodebuild >/dev/null || { echo 'This build runs on the GitHub macOS runner, not directly on Linux.'; exit 1; }
 mkdir -p build
+result_path="$project_root/build/PowerBridge.xcresult"
+if [[ -e "$result_path" ]]; then
+  result_path="$project_root/build/PowerBridge-$(date +%Y%m%d-%H%M%S)-$$.xcresult"
+fi
 xcodebuild \
   -project ios/PowerBridge.xcodeproj \
   -scheme PowerBridge \
@@ -12,6 +16,7 @@ xcodebuild \
   -sdk iphoneos \
   -destination 'generic/platform=iOS' \
   -derivedDataPath build/device \
+  -resultBundlePath "$result_path" \
   CODE_SIGNING_ALLOWED=NO \
   CODE_SIGNING_REQUIRED=NO \
   CODE_SIGN_IDENTITY='' \
@@ -45,5 +50,5 @@ with zipfile.ZipFile(sys.argv[1]) as archive:
         assert name in archive.namelist(), f'Missing {name}'
 print('IPA structure verified. Signing with a matching certificate/profile is still required.')
 PY
-shasum -a 256 "$ipa_path" > "$project_root/build/PowerBridge-unsigned.ipa.sha256"
+(cd "$project_root/build" && shasum -a 256 PowerBridge-unsigned.ipa > PowerBridge-unsigned.ipa.sha256)
 echo "Created $ipa_path"

@@ -1,0 +1,57 @@
+name: Build iPhone IPA
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+concurrency:
+  group: ios-build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  companion:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r companion/requirements.txt
+      - run: python -m unittest discover -s companion/tests -v
+  iphone-ipa:
+    runs-on: macos-15
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode 16.4
+        run: |
+          sudo xcode-select --switch /Applications/Xcode_16.4.app/Contents/Developer
+          xcodebuild -version
+          xcodebuild -showsdks
+      - name: Compile unsigned iPhone-device app and package IPA
+        run: |
+          mkdir -p build
+          bash scripts/build-unsigned-ipa.sh 2>&1 | tee build/ios-build.log
+      - name: Upload IPA for ESign
+        uses: actions/upload-artifact@v4
+        with:
+          name: PowerBridge-unsigned-IPA
+          path: |
+            build/PowerBridge-unsigned.ipa
+            build/PowerBridge-unsigned.ipa.sha256
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload build diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PowerBridge-build-diagnostics
+          path: |
+            build/ios-build.log
+            build/PowerBridge.xcresult
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Explain IPA download
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
+          Download **PowerBridge-unsigned-IPA** from this run's artifacts and extract the ZIP.
+          Sign **PowerBridge-unsigned.ipa** with your matching certificate and provisioning profile before installing.
+          Verify the download with `shasum -a 256 -c PowerBridge-unsigned.ipa.sha256` from the extracted folder.
+          EOF

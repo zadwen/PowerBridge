@@ -1,0 +1,17 @@
+config/
+config-*/
+.venv/
+__pycache__/
+*.pyc
+*.pem
+pairing.json
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+.DS_Store
+
+*.p12
+*.pfx
+*.mobileprovision
+*.ipa
