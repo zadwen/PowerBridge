@@ -1,0 +1,31 @@
+// !$*UTF8*$!
+{ archiveVersion = 1; classes = {}; objectVersion = 56; objects = {
+91199E97596F580073F7CCF9 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
+EF62B786B670B3A170ADDF2C = { isa = PBXBuildFile; fileRef = 91199E97596F580073F7CCF9; };
+19BFBC84FD9B2B92C10227AA = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+487C502A5481E87001E8CC43 = { isa = PBXBuildFile; fileRef = 19BFBC84FD9B2B92C10227AA; };
+D0B70D6C00039E2092BD27FF = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+495E178D3AA72329B0C3D345 = { isa = PBXBuildFile; fileRef = D0B70D6C00039E2092BD27FF; };
+3150FD2038E998E1BBC2033B = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerBridgeApp.swift; sourceTree = "<group>"; };
+114F05226F9EFCA56F341D36 = { isa = PBXBuildFile; fileRef = 3150FD2038E998E1BBC2033B; };
+A6D1EABD8211EBDFB4F8CBEC = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+614B4B7697321E24EDE03C80 = { isa = PBXBuildFile; fileRef = A6D1EABD8211EBDFB4F8CBEC; };
+3685E330EC5277A9DD5661C6 = { isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+CF8A4D27E1C506A7C75A76BE = { isa = PBXBuildFile; fileRef = 3685E330EC5277A9DD5661C6; };
+59BD0A3FF43B32849B319E64 = { isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+38A007151ABE87CC01A5B6E9 = { isa = PBXFileReference; explicitFileType = wrapper.application; path = PowerBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+3A2A88DEEFF3D1D23E496597 = { isa = PBXGroup; children = (91199E97596F580073F7CCF9,19BFBC84FD9B2B92C10227AA,D0B70D6C00039E2092BD27FF,3150FD2038E998E1BBC2033B,A6D1EABD8211EBDFB4F8CBEC,3685E330EC5277A9DD5661C6,59BD0A3FF43B32849B319E64,); path = PowerBridge; sourceTree = "<group>"; };
+FBDC4F23F93125BBEEAE800C = { isa = PBXGroup; children = (38A007151ABE87CC01A5B6E9,); name = Products; sourceTree = "<group>"; };
+DC76E9F0C0006E8F919E0C51 = { isa = PBXGroup; children = (3A2A88DEEFF3D1D23E496597,FBDC4F23F93125BBEEAE800C,); sourceTree = "<group>"; };
+BCE16DD0260827ECF338C787 = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (EF62B786B670B3A170ADDF2C,487C502A5481E87001E8CC43,495E178D3AA72329B0C3D345,114F05226F9EFCA56F341D36,614B4B7697321E24EDE03C80,); runOnlyForDeploymentPostprocessing = 0; };
+0189424A5A60FED329FA868E = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (CF8A4D27E1C506A7C75A76BE,); runOnlyForDeploymentPostprocessing = 0; };
+7561BFB015D8F536760CB671 = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+89E1FD6268CC0F221A2BE178 = { isa = XCBuildConfiguration; buildSettings = { IPHONEOS_DEPLOYMENT_TARGET = 17.0; SDKROOT = iphoneos; CLANG_ENABLE_MODULES = YES; SWIFT_VERSION = 5.0; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; DEBUG_INFORMATION_FORMAT = dwarf; SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG; }; name = Debug; };
+E6DE6C99132752C914FEF632 = { isa = XCBuildConfiguration; buildSettings = { IPHONEOS_DEPLOYMENT_TARGET = 17.0; SDKROOT = iphoneos; CLANG_ENABLE_MODULES = YES; SWIFT_VERSION = 5.0; SWIFT_OPTIMIZATION_LEVEL = "-O"; DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym"; }; name = Release; };
+F8C70E4123C9AE82C42562CC = { isa = XCConfigurationList; buildConfigurations = (89E1FD6268CC0F221A2BE178,E6DE6C99132752C914FEF632,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+7082CC0B6FC1282FCEABD07A = { isa = XCBuildConfiguration; buildSettings = { IPHONEOS_DEPLOYMENT_TARGET = 17.0; SDKROOT = iphoneos; CLANG_ENABLE_MODULES = YES; SWIFT_VERSION = 5.0; PRODUCT_NAME = "$(TARGET_NAME)"; PRODUCT_BUNDLE_IDENTIFIER = com.anas.PowerBridge; INFOPLIST_FILE = PowerBridge/Info.plist; CODE_SIGN_STYLE = Automatic; TARGETED_DEVICE_FAMILY = 1; MARKETING_VERSION = 1.0.0; CURRENT_PROJECT_VERSION = 1; ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; GENERATE_INFOPLIST_FILE = NO; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; DEBUG_INFORMATION_FORMAT = dwarf; SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG; }; name = Debug; };
+639A7CA24D39909E713B47F7 = { isa = XCBuildConfiguration; buildSettings = { IPHONEOS_DEPLOYMENT_TARGET = 17.0; SDKROOT = iphoneos; CLANG_ENABLE_MODULES = YES; SWIFT_VERSION = 5.0; PRODUCT_NAME = "$(TARGET_NAME)"; PRODUCT_BUNDLE_IDENTIFIER = com.anas.PowerBridge; INFOPLIST_FILE = PowerBridge/Info.plist; CODE_SIGN_STYLE = Automatic; TARGETED_DEVICE_FAMILY = 1; MARKETING_VERSION = 1.0.0; CURRENT_PROJECT_VERSION = 1; ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; GENERATE_INFOPLIST_FILE = NO; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_OPTIMIZATION_LEVEL = "-O"; DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym"; }; name = Release; };
+651ECA092BE81738918D8CDB = { isa = XCConfigurationList; buildConfigurations = (7082CC0B6FC1282FCEABD07A,639A7CA24D39909E713B47F7,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+0E8A3AD980EC179856012B7E = { isa = PBXNativeTarget; buildConfigurationList = 651ECA092BE81738918D8CDB; buildPhases = (BCE16DD0260827ECF338C787,7561BFB015D8F536760CB671,0189424A5A60FED329FA868E,); buildRules = (); dependencies = (); name = PowerBridge; productName = PowerBridge; productReference = 38A007151ABE87CC01A5B6E9; productType = "com.apple.product-type.application"; };
+98F54143AB4E86B28C3AFEE0 = { isa = PBXProject; attributes = { BuildIndependentTargetsInParallel = YES; LastUpgradeCheck = 1600; }; buildConfigurationList = F8C70E4123C9AE82C42562CC; compatibilityVersion = "Xcode 14.0"; developmentRegion = en; hasScannedForEncodings = 0; knownRegions = (en,Base,); mainGroup = DC76E9F0C0006E8F919E0C51; productRefGroup = FBDC4F23F93125BBEEAE800C; projectDirPath = ""; projectRoot = ""; targets = (0E8A3AD980EC179856012B7E,); };
+}; rootObject = 98F54143AB4E86B28C3AFEE0; }
